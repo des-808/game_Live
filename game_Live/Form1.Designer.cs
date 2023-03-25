@@ -78,7 +78,7 @@
             btnStop.Font = new Font("Segoe Print", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             btnStop.Location = new Point(10, 188);
             btnStop.Name = "btnStop";
-            btnStop.Size = new Size(113, 34);
+            btnStop.Size = new Size(106, 34);
             btnStop.TabIndex = 5;
             btnStop.Text = "Stop";
             btnStop.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             btnStart.Font = new Font("Segoe Print", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnStart.Location = new Point(10, 146);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(113, 36);
+            btnStart.Size = new Size(106, 36);
             btnStart.TabIndex = 4;
             btnStart.Text = "Start";
             btnStart.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             numDensity.Location = new Point(10, 98);
             numDensity.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
             numDensity.Name = "numDensity";
-            numDensity.Size = new Size(120, 23);
+            numDensity.Size = new Size(106, 23);
             numDensity.TabIndex = 3;
             numDensity.TextAlign = HorizontalAlignment.Right;
             numDensity.Value = new decimal(new int[] { 3, 0, 0, 0 });
@@ -121,10 +121,10 @@
             numResolution.Maximum = new decimal(new int[] { 25, 0, 0, 0 });
             numResolution.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numResolution.Name = "numResolution";
-            numResolution.Size = new Size(120, 23);
+            numResolution.Size = new Size(106, 23);
             numResolution.TabIndex = 1;
             numResolution.TextAlign = HorizontalAlignment.Right;
-            numResolution.Value = new decimal(new int[] { 25, 0, 0, 0 });
+            numResolution.Value = new decimal(new int[] { 3, 0, 0, 0 });
             // 
             // label1
             // 
@@ -144,6 +144,7 @@
             pictureBox1.Size = new Size(591, 365);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.MouseMove += pictureBox1_MouseMove;
             // 
             // timer1
             // 
