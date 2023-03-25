@@ -22,12 +22,12 @@ namespace game_Live
             resolution = (int)numResolution.Value;
             rows = pictureBox1.Height / resolution;
             cols = pictureBox1.Width / resolution;
-            field = new bool[rows, cols];
+            field = new bool[cols, rows];
 
             Random rnd = new Random();
-            for (int i = 0; i < rows - 1; i++)
+            for (int i = 0; i < cols; i++)
             {
-                for (int j = 0; j < cols; j++)
+                for (int j = 0; j < rows; j++)
                 {
                     field[i, j] = rnd.Next((int)numDensity.Value) == 0;
                 }
@@ -41,9 +41,9 @@ namespace game_Live
         private void NextGeneration()
         {
             graphics.Clear(Color.Black);
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < cols; i++)
             {
-                for (int j = 0; j < cols; j++)
+                for (int j = 0; j < rows; j++)
                 {
                     if (field[i, j])
                     {
