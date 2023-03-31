@@ -10,6 +10,7 @@ namespace game_Live
         private bool[,] field;
         private int rows;
         private int cols;
+        private int delimeter_resolution = 2;
         public Form1()
         {
             InitializeComponent();
@@ -54,14 +55,14 @@ namespace game_Live
                     else { newField[i, j] = field[i, j]; }
                     if (hasLife)
                     {
-                        graphics.FillRectangle(Brushes.Crimson, i * resolution, j * resolution, resolution, resolution);
+                        graphics.FillRectangle(Brushes.Crimson, i * resolution, j * resolution, resolution - delimeter_resolution, resolution - delimeter_resolution);
                     }
                 }
             }
             field = newField;
             pictureBox1.Refresh();
         }
-        private int CountNeighbours(int i, int j)
+        private int CountNeighbours(int i, int j)//счётчик соседей
         {
             int count = 0;
             for (int x = -1; x < 2; x++)
@@ -91,19 +92,65 @@ namespace game_Live
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(!timer1.Enabled) return;
-            if(e.Button == MouseButtons.Left)
+            //var mouseX = e.Location.X;
+            //var mouseY = e.Location.Y;
+            //Text = mouseX + " " + mouseY;
+            //Text  = Size.Width.ToString()+" "+Size.Height.ToString();
+
+            //if (( Size.Height> e.Location.Y|| e.Location.Y > 0) || (Size.Width > e.Location.X || e.Location.X > 0)){Text = "норма";}else{Text = "хуета";}
+            //if (e.X > Size.Width || e.X<0 || (e.Y > ClientSize.Height || e.Y<0)) { Text = "не норма"; }
+            int xx = e.X;
+            int yy = e.Y;
+            int size_X = ClientSize.Width;
+            int size_Y = ClientSize.Height;
+            if ((e.X > ClientSize.Width - 155 || e.X < 0) || (e.Y > ClientSize.Height - 10 || e.Y < 0)) { Text = "не норма"; }
+            else
             {
-                var x = e.Location.X / resolution;
-                var y = e.Location.Y / resolution;
-                field[x, y] = true;
+                Text = "норма";
+
+                if (!timer1.Enabled) return;
+                if (e.Button == MouseButtons.Left)
+                {
+                    var x = e.X / resolution;
+                    var y = e.Y / resolution;
+                    field[x, y] = true;
+                }
+                if (e.Button == MouseButtons.Right)
+                {
+                    var x = e.Location.X / resolution;
+                    var y = e.Location.Y / resolution;
+                    field[x, y] = false;
+                }
+
+
             }
-            if (e.Button == MouseButtons.Right)
-            {
-                var x = e.Location.X / resolution;
-                var y = e.Location.Y / resolution;
-                field[x, y] = false;
-            }
+            ////if(Size.Height<e.Location.Y||e.Location.Y==0)
+            //if (!timer1.Enabled) return;
+            //if (e.Button == MouseButtons.Left)
+            //{
+            //    var x = e.Location.X / resolution;
+            //    var y = e.Location.Y / resolution;
+            //    field[x, y] = true;
+            //}
+            //if (e.Button == MouseButtons.Right)
+            //{
+            //    var x = e.Location.X / resolution;
+            //    var y = e.Location.Y / resolution;
+            //    field[x, y] = false;
+            //}
         }
+
+        //private void mouse_move(object sender, MouseEventArgs e)
+        //{
+        //    //Point mouseXY = e.GetPosition(this);
+
+        //    int mouseX = e.X;
+        //    int mouseY = e.Y;
+        //    string x = Form1.MousePosition.X.ToString();//text = "X:" + mouseX + " " + "Y:" + mouseY;
+        //    string y = Form1.MousePosition.Y.ToString();//text = "X:" + mouseX + " " + "Y:" + mouseY;
+        //  Text = x + " " + y;
+        //    //mousePath.AddLine(mouseX, mouseY, mouseX, mouseY);
+        //}
+
     }
 }
